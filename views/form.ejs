@@ -1,0 +1,34 @@
+<html>
+  <head>
+    <title><%= title %></title>
+  </head>
+  <body>
+    <form action="/new" method="post">
+      <h2>Post a Message</h2>
+      <div>
+        <label for="user-name">
+          User Name:
+          <input type="text" id="user-name" name="userName" required />
+        </label>
+      </div>
+      <div>
+        <label for="message-heading">
+          Message Heading:
+          <input type="text" id="message-heading" name="messageText" required />
+        </label>
+      </div>
+      <div>
+        <label for="message-description">
+          Message Description:
+          <input
+            type="text"
+            id="message-description"
+            name="messageDescription"
+            required
+          />
+        </label>
+      </div>
+      <button type="submit">Submit your response!</button>
+    </form>
+  </body>
+</html>
