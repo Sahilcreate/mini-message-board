@@ -1,8 +1,8 @@
-const db = require("../db");
+const queries = require("../db/queries");
 const CustomNoMessageError = require("../errors/CustomNoMessageError");
 
 async function getMessages(req, res) {
-  const messages = await db.getMessages();
+  const messages = await queries.getAllMessages();
 
   if (!messages) {
     throw new CustomNoMessageError("No Messages Found!");

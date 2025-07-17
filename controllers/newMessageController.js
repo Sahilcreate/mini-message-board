@@ -1,13 +1,9 @@
-const db = require("../db");
+const queries = require("../db/queries");
 
-function postMessage(req, res) {
+async function postMessage(req, res) {
   const message = req.body;
-  db.postMessage(
-    message.messageText,
-    message.userName,
-    message.messageDescription
-  );
+  await queries.postMessage(message);
   res.redirect("/");
 }
 
-module.exports = postMessage;
+module.exports = { postMessage };
