@@ -1,19 +1,36 @@
 <html>
   <head>
     <title><%= title %></title>
+    <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    <% messages.forEach((message) => { %>
-    <div>
-      <div><%= message.user %></div>
-      <div><%= message.text %></div>
-      <div><%= message.added %></div>
-      <div>
-        <a href="/message/<%= message.id %>">Open the message</a>
+    <div class="view-container">
+      <div class="messages-container">
+        <% messages.forEach((message) => { %>
+        <div class="message-wrapper">
+          <div class="message-username"><%= message.username %></div>
+          <div class="message-heading"><%= message.message_heading %></div>
+          <div class="message-date">
+            <%= new Date(message.added_date).toLocaleString('en-IN') %>
+          </div>
+          <div class="btns-container">
+            <a href="/message/<%= message.id %>">
+              <button class="open-message">Open Message</button>
+            </a>
+            <form action="/delete/<%= message.id %>" method="POST">
+              <button type="submit" class="delete-message">
+                Delete Message
+              </button>
+            </form>
+          </div>
+        </div>
+        <% }); %>
+      </div>
+      <div class="new-message-wrapper">
+        <a href="/new">
+          <button class="new-message">Add New Message</button>
+        </a>
       </div>
     </div>
-    <br />
-    <% }); %>
-    <a href="/new">Add a new Message</a>
   </body>
 </html>
